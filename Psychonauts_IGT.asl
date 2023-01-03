@@ -1,50 +1,58 @@
 state("Psychonauts")
 {
-	bool isLoading : "Psychonauts.exe", 0x38C7F4;
-	string8 currentCutscene : "Psychonauts.exe", 0x395A97;
-	string18 savingPreferences : "Psychonauts.exe", 0x01079A0, 0x34, 0x58, 0xC, 0x40, 0x8, 0x0;
+	bool isLoading : 0x38C7F4;
+	string8 currentCutscene : 0x395A97;
+	string18 savingPreferences : 0x1079A0, 0x34, 0x58, 0xC, 0x40, 0x8, 0x0;
+}
+
+startup
+{
+	settings.Add("cabv.bik", true, "BasicBrainingStart");
+	settings.Add("marksman", true, "ShootingGallery");
+	settings.Add("caem_win", true, "DanceParty");
+	settings.Add("nien.bik", true, "BrainTank");
+	settings.Add("llbt.bik", true, "ScavengerHunt");
+	settings.Add("llil.bik", true, "Linda");
+	settings.Add("love.bik", true, "Lungfishopolis");
+	settings.Add("mmdd.bik", true, "Milkman");
+	settings.Add("assp.bik", true, "BrainTank2");
+	settings.Add("mcvi.bik", true, "MeatCircusFinish");
+}
+
+onStart
+{
+	vars.oldSceneSplit = "";
+	vars.brainTank2Kill = false;
+}
+
+init
+{
+	timer.IsGameTimePaused = false;
+	vars.oldSceneSplit = "";
+	vars.brainTank2Kill = false;
 }
 
 start
 {
-	vars.oldSceneSplit = "";
-	vars.brainTank2KillScene = "";
-	if (current.savingPreferences == "Saving preferences") {
-		return true;
-	}
-}
-
-startup {
-	settings.Add("BasicBrainingStart", true);
-	settings.Add("ShootingGallery", true);
-	settings.Add("DanceParty", true);
-	settings.Add("BrainTank", true);
-	settings.Add("ScavengerHunt", true);
-	settings.Add("Linda", true);
-	settings.Add("Lungfishopolis", true);
-	settings.Add("Milkman", true);
-	settings.Add("BrainTank2", true);
-	settings.Add("MeatCircusFinish", true);
+	return current.savingPreferences == "Saving preferences";
 }
 
 split
 {
-	// Most splits here...
-	if (((current.currentCutscene == "cabv.bik" && settings["BasicBrainingStart"]) || (current.currentCutscene == "marksman" && settings["ShootingGallery"]) 
-	 || (current.currentCutscene == "caem_win" && settings["DanceParty"]) || (current.currentCutscene == "nien.bik"  && settings["BrainTank"])
-	 || (current.currentCutscene == "llbt.bik" && settings["ScavengerHunt"]) || (current.currentCutscene == "llil.bik" && settings["Linda"]) 
-	 || (current.currentCutscene == "love.bik" && settings["Lungfishopolis"]) || (current.currentCutscene == "mmdd.bik" && settings["Milkman"]) 
-	 || (current.currentCutscene == "mcvi.bik" && settings["MeatCircusFinish"])) && current.currentCutscene != vars.oldSceneSplit) {
+	if (current.currentCutscene != vars.oldSceneSplit && settings[current.currentCutscene])
+	{
 		vars.oldSceneSplit = current.currentCutscene;
 		return true;
-	} else if (current.currentCutscene == "assp.bik" && vars.brainTank2KillScene == "" && settings["BrainTank2"]) { // Meat circus doesn't have a prerendered to go off of
-		vars.brainTank2KillScene = current.currentCutscene;
-		return false;
-	} else if (vars.brainTank2KillScene != "" && current.isLoading) { // split once we've seen assp.bik and we hit a loading screen
-		vars.brainTank2KillScene = "";
+	}
+
+	if (current.currentCutscene == "assp.bik" && settings["assp.bik"] && !vars.brainTank2Kill)
+	{
+		vars.brainTank2Kill = true;
+	}
+	else if (vars.brainTank2Kill && current.isLoading)
+	{
 		return true;
 	}
-	else return false;
 }
 
 isLoading
@@ -55,16 +63,4 @@ isLoading
 exit
 {
 	timer.IsGameTimePaused = true;
-} 
-
-init
-{
-	timer.IsGameTimePaused = false;
-	vars.oldSceneSplit = "";
-	vars.brainTank2KillScene = "";
-}
-
-gameTime
-{
-
 }
