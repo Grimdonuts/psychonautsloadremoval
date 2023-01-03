@@ -7,7 +7,7 @@ state("Psychonauts")
 
 startup
 {
-	settings.Add("cabv.bik", true, "BasicBrainingStart");
+	settings.Add("cabv.bik", true, "BasicBraining");
 	settings.Add("marksman", true, "ShootingGallery");
 	settings.Add("caem_win", true, "DanceParty");
 	settings.Add("nien.bik", true, "BrainTank");
@@ -15,9 +15,9 @@ startup
 	settings.Add("llil.bik", true, "Linda");
 	settings.Add("love.bik", true, "Lungfishopolis");
 	settings.Add("mmdd.bik", true, "Milkman");
-	settings.Add("thbf.bik", false, "Theater");
-	settings.Add("bvvi.bik", false, "BlackVelvetopia");
-	settings.Add("aswv.bik", false, "WaterlooWorld");
+	settings.Add("thbf.bik", true, "Theater");
+	settings.Add("bvvi.bik", true, "BlackVelvetopia");
+	settings.Add("aswv.bik", true, "WaterlooWorld");
 	settings.Add("assp.bik", true, "BrainTank2");
 	settings.Add("mcvi.bik", true, "MeatCircusFinish");
 }
