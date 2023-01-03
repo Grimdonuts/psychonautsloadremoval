@@ -39,18 +39,19 @@ start
 
 split
 {
-	if (current.currentCutscene != vars.oldSceneSplit && settings[current.currentCutscene])
+	if (current.currentCutscene != vars.oldSceneSplit && settings[current.currentCutscene] && current.currentCutscene != "assp.bik")
 	{
 		vars.oldSceneSplit = current.currentCutscene;
 		return true;
 	}
 
-	if (current.currentCutscene == "assp.bik" && settings["assp.bik"] && !vars.brainTank2Kill)
+	if (current.currentCutscene == "assp.bik" && settings[current.currentCutscene] && !vars.brainTank2Kill)
 	{
 		vars.brainTank2Kill = true;
 	}
 	else if (vars.brainTank2Kill && current.isLoading)
 	{
+		vars.brainTank2Kill = false;
 		return true;
 	}
 }
