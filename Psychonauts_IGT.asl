@@ -15,6 +15,9 @@ startup
 	settings.Add("llil.bik", true, "Linda");
 	settings.Add("love.bik", true, "Lungfishopolis");
 	settings.Add("mmdd.bik", true, "Milkman");
+	settings.Add("thbf.bik", false, "Theater");
+	settings.Add("bvvi.bik", false, "BlackVelvetopia");
+	settings.Add("aswv.bik", false, "WaterlooWorld");
 	settings.Add("assp.bik", true, "BrainTank2");
 	settings.Add("mcvi.bik", true, "MeatCircusFinish");
 }
