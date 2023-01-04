@@ -11,7 +11,7 @@ startup
 	settings.Add("marksman", true, "ShootingGallery");
 	settings.Add("caem_win", true, "DanceParty");
 	settings.Add("nien.bik", true, "BrainTank");
-	settings.Add("llbt.bik", true, "ScavengerHunt");
+	settings.Add("calk.bik", true, "ScavengerHunt");
 	settings.Add("llil.bik", true, "Linda");
 	settings.Add("love.bik", true, "Lungfishopolis");
 	settings.Add("mmdd.bik", true, "Milkman");
