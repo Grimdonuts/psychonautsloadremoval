@@ -2,7 +2,10 @@ state("Psychonauts")
 {
 	bool isLoading : 0x38C7F4;
 	string8 currentCutscene : 0x395A97;
-	string18 savingPreferences : 0x038CB80, 0x40, 0x644, 0x4, 0x18, 0x128, 0x8, 0x0;
+	string18 savingPreferences : 0x038CB78, 0x38, 0x644, 0x4, 0x18, 0x128, 0x8, 0x0;
+	string18 savingPreferences2 : 0x038CB88, 0x10, 0x84, 0x30, 0x10, 0x8, 0x0;
+	string18 savingPreferences3 : 0x038CB78, 0x38, 0x644, 0x4, 0x18, 0x128, 0x8, 0x0;
+	string18 savingPreferences4 :  0x038CB88, 0x10, 0x84, 0x10, 0x10, 0x8, 0x0;
 	string4 currentLevel : 0x38BC20, 0x989A;
 }
 
@@ -36,7 +39,8 @@ init
 
 start
 {
-	return current.savingPreferences == "Saving preferences";
+	return current.savingPreferences == "Saving preferences" || current.savingPreferences2 == "Saving preferences" || current.savingPreferences3 == "Saving preferences" 
+	|| current.savingPreferences4 == "Saving preferences";
 }
 
 split
