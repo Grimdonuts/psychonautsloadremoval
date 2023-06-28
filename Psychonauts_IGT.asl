@@ -17,6 +17,7 @@ startup
 	settings.Add("NIBACASA", true, "Brain Tank");
 	settings.Add("CAGPCABH", true, "Scavenger Hunt");
 	settings.Add("LLLLLOMA", true, "Linda");
+	settings.Add("CALICAMA", false, "Cobweb Duster");
 	settings.Add("LOCBASGR", true, "Lungfishopolis");
 	settings.Add("MMDMASGR", true, "Milkman");
 	settings.Add("THFBASGR", true, "Theater");
