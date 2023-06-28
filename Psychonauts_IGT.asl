@@ -6,7 +6,7 @@ state("Psychonauts")
 	string18 savingPreferences2 : 0x038CB88, 0x10, 0x84, 0x30, 0x10, 0x8, 0x0;
 	string18 savingPreferences3 : 0x038CB78, 0x38, 0x644, 0x4, 0x18, 0x128, 0x8, 0x0;
 	string18 savingPreferences4 :  0x038CB88, 0x10, 0x84, 0x10, 0x10, 0x8, 0x0;
-	string4 currentLevel : 0x38BC20, 0x989A;
+	string4 currentLevel : 0x38BC20, 0x98CC;
 }
 
 startup
@@ -15,9 +15,9 @@ startup
 	settings.Add("SACUCASA", true, "Shooting Gallery");
 	settings.Add("MILLCABH", true, "Dance Party");
 	settings.Add("NIBACASA", true, "Brain Tank");
-	settings.Add("CAGPCABH", true, "Scavenger Hunt");
+	settings.Add("CAGP_NIGHTCABH_NIGHT", true, "Scavenger Hunt");
 	settings.Add("LLLLLOMA", true, "Linda");
-	settings.Add("CALICAMA", false, "Cobweb Duster");
+	settings.Add("CALI_NIGHTCAMA_NIGHT", false, "Cobweb Duster");
 	settings.Add("LOCBASGR", true, "Lungfishopolis");
 	settings.Add("MMDMASGR", true, "Milkman");
 	settings.Add("THFBASGR", true, "Theater");
